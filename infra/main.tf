@@ -55,3 +55,15 @@ module "rabbitmq" {
 }
 
 
+module "EKS" {
+  source                  = "./vendor/modules/eks/"
+  ENV                     = var.env
+  PRIVATE_SUBNET_IDS      = local.apps_subnets_ids
+  PUBLIC_SUBNET_IDS       = local.public_subnets_ids
+  DESIRED_SIZE            = 1
+  MAX_SIZE                = 4
+  MIN_SIZE                = 1
+  CREATE_ALB_INGRESS      = false
+  CREATE_EXTERNAL_SECRETS = false
+}
+
