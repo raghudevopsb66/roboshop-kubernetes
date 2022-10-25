@@ -1,5 +1,5 @@
 node() {
   stage('Create Cluster') {
-    sh 'make prod'
+    sh 'cd infra && make prod'
   }
 }
