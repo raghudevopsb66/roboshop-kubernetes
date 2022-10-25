@@ -7,7 +7,12 @@ node() {
 
 
     stage('Create Cluster') {
-      sh 'cd infra && make prod'
+      sh '''
+        cd infra
+        terrafile
+        terraform init -backend-config env/prod-backend.tfvars
+        terraform apply -var-file env/prod.tfvars
+      '''
     }
   }
 }
