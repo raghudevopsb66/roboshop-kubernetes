@@ -18,7 +18,7 @@ pipeline {
     stage('Install Helm Chart') {
       steps {
         sh '''
-          helm install ${COMPONENT} ./helm-chart -f app/dev-values.yml
+          helm upgrade -i ${COMPONENT} ./helm-chart -f app/dev-values.yml
         '''
       }
     }
