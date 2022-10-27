@@ -29,6 +29,18 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: 739561048503.dkr.ecr.us-east-1.amazonaws.com/{{ .Values.componentName }}:{{ .Values.appVersion }}
           imagePullPolicy: Always
+          livenessProbe:
+            httpGet:
+              path: {{ .Values.healthEndpoint}}
+              port: {{ .Values.appPort}}
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: {{ .Values.healthEndpoint}}
+              port: {{ .Values.appPort}}
+            initialDelaySeconds: 10
+            periodSeconds: 5
           {{- if .Values.externalSecret.enabled }}
           envFrom:
             - secretRef:
