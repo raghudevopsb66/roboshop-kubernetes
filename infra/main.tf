@@ -60,10 +60,11 @@ module "EKS" {
   ENV                     = var.env
   PRIVATE_SUBNET_IDS      = local.apps_subnets_ids
   PUBLIC_SUBNET_IDS       = local.public_subnets_ids
-  DESIRED_SIZE            = 1
+  DESIRED_SIZE            = 3
   MAX_SIZE                = 4
-  MIN_SIZE                = 1
+  MIN_SIZE                = 3
   CREATE_ALB_INGRESS      = true
   CREATE_EXTERNAL_SECRETS = true
+  INSTALL_KUBE_METRICS    = true
 }
 
