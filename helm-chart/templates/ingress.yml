@@ -17,5 +17,5 @@ spec:
             service:
               name: {{ .Values.componentName }}
               port:
-                number: {{ .Values.ingress.appPort }}
+                number: {{ .Values.appPort }}
 {{- end}}
