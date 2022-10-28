@@ -33,13 +33,13 @@ spec:
             httpGet:
               path: {{ .Values.healthEndpoint}}
               port: {{ .Values.appPort}}
-            initialDelaySeconds: 10
+            initialDelaySeconds: 30
             periodSeconds: 5
           readinessProbe:
             httpGet:
               path: {{ .Values.healthEndpoint}}
               port: {{ .Values.appPort}}
-            initialDelaySeconds: 10
+            initialDelaySeconds: 30
             periodSeconds: 5
           {{- if .Values.externalSecret.enabled }}
           envFrom:
